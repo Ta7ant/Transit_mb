@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    {{ title }}
+{% endblock %}
+
+{% block content %}
+    <div class="jumbotron text-center">
+        <h1 class="display-4">Добро пожаловать!</h1>
+        <p class="lead">Мы предлагаем надежные и быстрые транспортные услуги.</p>
+        <hr class="my-4">
+        <p>Узнайте больше о наших услугах или свяжитесь с нами для заказа.</p>
+        <a class="btn btn-primary btn-lg" href="{% url 'services' %}" role="button">Наши услуги</a>
+    </div>
+
+    <div class="row">
+        <div class="col-md-4">
+            <h2>Грузоперевозки</h2>
+            <p>Быстрая и надежная доставка грузов по городу и области.</p>
+        </div>
+        <div class="col-md-4">
+            <h2>Междугородние перевозки</h2>
+            <p>Перевозим грузы в любую точку страны. Гарантируем сохранность и своевременность.</p>
+        </div>
+        <div class="col-md-4">
+            <h2>Крупногабаритные грузы</h2>
+            <p>Специальный транспорт для перевозки крупногабаритных и тяжелых грузов.</p>
+        </div>
+    </div>
+    {% if tasks %}
+        {% for el in tasks %}
+            <div class="alert alert-warning mt-2">
+                <h3>{{ el.title }}</h3>
+                <p>{{ el.task }}</p>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p>У нас нет записей</p>
+    {% endif %}
+{% endblock %}
